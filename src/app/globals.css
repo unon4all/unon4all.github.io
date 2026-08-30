@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  /* Base canvas — the dark "product launch" stage the whole journey sits on */
+  --canvas: #08080c;
+  --canvas-raised: #101018;
+  --on-canvas: #f3f1ee;
+  --on-canvas-soft: #a6a3ab;
+  --on-canvas-faint: #605d68;
+  --hairline: #232129;
+
+  /* Era accent — interpolated by scroll position via inline styles, these are fallbacks */
+  --era-accent: #6e6a76;
+  --era-accent-soft: #6e6a7622;
+
+  /* Material-You-inspired dynamic palette, used from the Android era onward */
+  --dyn-primary: #b7a3ff;
+  --dyn-secondary: #7cf2c2;
+  --dyn-tertiary: #ffb3a7;
+  --dyn-glow: #6d5bff;
+
+  /* Panda Letter's own palette — reproduced on its in-device screen for authenticity */
+  --pl-paper: #f8f1ea;
+  --pl-ink: #2a2018;
+  --pl-accent: #a8557a;
+
+  /* Scanify's own palette — cooler, technical, reproduced on its in-device screen */
+  --sc-bg: #0c1420;
+  --sc-ink: #dfe8f5;
+  --sc-accent: #4fa3ff;
+
+  /* Calm outro palette — deliberate contrast against the dark journey */
+  --outro-paper: #f6f2ea;
+  --outro-ink: #201d1a;
+  --outro-accent: #473c96;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-canvas-raised: var(--canvas-raised);
+  --color-onCanvas: var(--on-canvas);
+  --color-onCanvasSoft: var(--on-canvas-soft);
+  --color-onCanvasFaint: var(--on-canvas-faint);
+  --color-hairline: var(--hairline);
+  --color-dynPrimary: var(--dyn-primary);
+  --color-dynSecondary: var(--dyn-secondary);
+  --color-dynTertiary: var(--dyn-tertiary);
+  --color-plPaper: var(--pl-paper);
+  --color-plInk: var(--pl-ink);
+  --color-plAccent: var(--pl-accent);
+  --color-scBg: var(--sc-bg);
+  --color-scInk: var(--sc-ink);
+  --color-scAccent: var(--sc-accent);
+  --color-outroPaper: var(--outro-paper);
+  --color-outroInk: var(--outro-ink);
+  --color-outroAccent: var(--outro-accent);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--hairline);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--on-canvas);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--dyn-glow);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
